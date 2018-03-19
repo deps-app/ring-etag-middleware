@@ -177,8 +177,8 @@
 ;; Public
 
 (defn supports-extended-attributes?
-  "Not all filesystems suport Java's UserDefinedFileAttributes (a.k.a. extended attributes),
-  notably HFS+ and APFS on macOS.
+  "Java's UserDefinedFileAttributes (a.k.a. extended attributes) do not support
+  extended attributes on all platforms, notably HFS+ and APFS on macOS.
 
   Waiting for https://bugs.openjdk.java.net/browse/JDK-8030048 to add macOS support."
   [^Path path]
