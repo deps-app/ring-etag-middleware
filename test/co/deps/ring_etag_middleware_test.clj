@@ -37,26 +37,26 @@ goog.require('cljs.core');
 (deftest add-file-etag-test
   (is (= (get-header (add-file-etag {:body *temp-file*} false)
                      "ETag")
-         "4146274220")))
+         "3677941581")))
 
 (deftest add-file-etag-extended-attributes-test
   (when (supports-extended-attributes? (.toPath *temp-file*))
     (let [mod-date (.lastModified *temp-file*)]
       (is (nil? (get-attribute (.toPath *temp-file*) checksum-attribute-name)))
       (is (= (get-header (add-file-etag {:body *temp-file*} true) "ETag")
-             "4146274220"))
+             "3677941581"))
       (is (= (get-attribute (.toPath *temp-file*) checksum-attribute-name)
-             "4146274220"))
+             "3677941581"))
       (testing "adding attributes to file doesn't update last modified date"
         (is (= mod-date (.lastModified *temp-file*))))
       (is (= (get-header (add-file-etag {:body *temp-file*} true) "ETag")
-             "4146274220")))))
+             "3677941581")))))
 
 (deftest wrap-file-etag-test
   (testing "file response"
     (is (= (dissoc ((wrap-file-etag (constant-handler *temp-file*)) {:request-method :get, :uri "/"})
                    :body)
-           {:headers {"ETag" "4146274220"}
+           {:headers {"ETag" "3677941581"}
             :status  200})))
   (testing "string response has no etag"
     (is (= ((wrap-file-etag (constant-handler "test")) {:request-method :get, :uri "/"})

@@ -1,7 +1,6 @@
 # ring-etag-middleware
 
-Calculates [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) for [Ring](https://github.com/ring-clojure/ring) responses using an Adler32 checksum. 
-
+Calculates [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) for [Ring](https://github.com/ring-clojure/ring) File responses using a CRC32 checksum. 
 
 ## Usage
 
