@@ -3,4 +3,6 @@
   :url "http://example.com/FIXME"
   :license {:name "MIT"
             :url "https://opensource.org/licenses/MIT"}
-  :dependencies [[org.clojure/clojure "1.8.0"]])
+  :global-vars {*warn-on-reflection* true}
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [ring/ring-core "1.6.3"]])
