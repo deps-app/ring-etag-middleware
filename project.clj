@@ -1,4 +1,4 @@
-(defproject co.deps/ring-etag-middleware "0.2.0"
+(defproject co.deps/ring-etag-middleware "0.2.1-SNAPSHOT"
   :description "Ring middleware to set an ETag on responses"
   :url "https://github.com/deps-app/ring-etag-middleware"
   :license {:name "MIT"
