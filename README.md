@@ -7,10 +7,10 @@ Calculates [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETa
 Add this to your `project.clj` or `build.boot`:
 
 ```
-[co.deps/ring-etag-middleware "0.5.0"]
+[co.deps/ring-etag-middleware "0.2.0"]
 ```
 
-Require the namespace and add it to your middleware stack:
+Require the namespace and add `wrap-file-etag` to your middleware stack:
 
 ```clojure
 (ns my-app.core
@@ -22,9 +22,9 @@ Require the namespace and add it to your middleware stack:
 
 ## Caching checksum calculations
 
-Once a checksum for a file has been calculated once, it is unnecessary to calculate it again. If the files you are serving are immutable, then it would be possible to pre-calculate the checksum once. However if you are working in an environment where the files being served may change (say a ClojureScript compiler output directory), then you cannot store the checksum separately from the file (either in-memory or on-disk), as you don't have a 100% reliable method for detecting when the file has changed (without running a file watcher, which we won't do here).
+Once a checksum for a file has been calculated once, it is unnecessary to calculate it again. If the files you are serving are immutable, then it would be possible to pre-calculate the checksum once. However if you are working in an environment where the files being served may change (say a ClojureScript compiler output directory), then you cannot store the checksum separately from the file (either in-memory or on-disk), as you don't have a 100% reliable method for detecting when to recalculate the checksum (without running a file watcher, which introduces its own problems).
 
-Instead, ring-etag-middleware provides a way to store checksums in the [extended attributes](https://en.wikipedia.org/wiki/Extended_file_attributes) of the files being served. If this option is enabled, the middleware will check if the `java.io.File` in the Ring response has a checksum calculated. If so it will return it as the ETag, if not it will calculate the checksum and store it as an extended attribute on the `File`.The JDK doesn't support this on all platforms that have support for extended attributes (notably [macOS](https://bugs.openjdk.java.net/browse/JDK-8030048)), so it is recommended to check for support with the provided `supports-extended-attributes?` function.
+Instead, ring-etag-middleware provides a way to store checksums in the [extended attributes](https://en.wikipedia.org/wiki/Extended_file_attributes) of the files being served. If this option is enabled, the middleware will check if the `java.io.File` in the Ring response has a checksum calculated. If so it will return it as the ETag; if not it will calculate the checksum and store it as an extended attribute on the `File`. The JDK doesn't support this on all platforms that have support for extended attributes (notably [macOS](https://bugs.openjdk.java.net/browse/JDK-8030048)), so it is recommended to check for support with the provided `supports-extended-attributes?` function.
 
 ```clojure
 (ns my-app.web
