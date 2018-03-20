@@ -1,6 +1,8 @@
 # ring-etag-middleware
 
-Calculates [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) for [Ring](https://github.com/ring-clojure/ring) File responses using a CRC32 checksum. 
+[![Clojars Project](https://img.shields.io/clojars/v/co.deps/ring-etag-middleware.svg)](https://clojars.org/co.deps/ring-etag-middleware) [![CircleCI](https://circleci.com/gh/danielcompton/ring-ip-whitelist.svg?style=svg)](https://circleci.com/gh/danielcompton/ring-ip-whitelist) [![Dependencies Status](https://versions.deps.co/deps-app/ring-etag-middleware/status.svg)](https://versions.deps.co/deps-app/ring-etag-middleware)
+
+Calculates [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) for [Ring](https://github.com/ring-clojure/ring) File responses using a CRC32 checksum.
 
 ## Usage
 
