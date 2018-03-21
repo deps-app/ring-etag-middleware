@@ -50,6 +50,10 @@ Instead, ring-etag-middleware provides a way to store checksums in the [extended
 
 We use CRC32 over Adler32 because it has a [lower risk](https://www.leviathansecurity.com/blog/analysis-of-adler32) of collisions at the cost of being slightly slower to calculate (10-20%). If you are at all concerned about performance, you should enable storing checksums in file extended attributes.
 
+## Serving ClojureScript files
+
+I've written a [blog post](https://danielcompton.net/2018/03/21/how-to-serve-clojurescript) detailing how this is used to serve ClojureScript files and avoid caching inconsistencies.
+
 ## License
 
 Copyright © 2018 Daniel Compton
