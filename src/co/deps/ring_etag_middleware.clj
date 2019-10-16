@@ -90,5 +90,10 @@
   ([handler]
     (wrap-file-etag handler {}))
   ([handler {:keys [extended-attributes?] :as options}]
-   (fn [req]
-     (add-file-etag (handler req) extended-attributes?))))
+   (fn
+     ([req]
+      (add-file-etag (handler req) extended-attributes?))
+     ([req respond raise]
+      (handler req
+               #(respond (add-file-etag % extended-attributes?))
+               raise)))))
