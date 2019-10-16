@@ -9,7 +9,7 @@ Calculates [ETags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETa
 Add this to your `project.clj` or `build.boot`:
 
 ```
-[co.deps/ring-etag-middleware "0.2.0"]
+[co.deps/ring-etag-middleware "0.2.1"]
 ```
 
 Require the namespace and add `wrap-file-etag` to your middleware stack:
