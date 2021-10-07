@@ -51,10 +51,11 @@
 ;; Public API
 
 (defn supports-extended-attributes?
-  "Java's UserDefinedFileAttributes (a.k.a. extended attributes) do not support
-  extended attributes on all platforms, notably HFS+ and APFS on macOS.
+  "The JDK doesn't support UserDefinedFileAttributes (a.k.a. extended attributes)
+  on all platforms.
 
-  Waiting for https://bugs.openjdk.java.net/browse/JDK-8030048 to add macOS support."
+  Notably, HFS+ and APFS on macOS do not support extended attributes on JDK 16 and
+  below. Support was added in JDK 17: https://bugs.openjdk.java.net/browse/JDK-8030048."
   [^Path path]
   (.supportsFileAttributeView
     (Files/getFileStore path)
